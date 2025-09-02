@@ -59,6 +59,6 @@ This project is licensed under the MIT License.
 
 ---
 
-<div align="center">
+<div>
   <p>Made with 💜 by Rick Liu</p>
 </div>
