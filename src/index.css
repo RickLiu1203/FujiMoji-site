@@ -1,1 +1,104 @@
 @import "tailwindcss";
+
+@theme {
+  --shadow-button: 4px 4px 0 rgba(0,0,0,1);
+}
+
+/* Ultra-smooth infinite scroll animation */
+@keyframes vertical-marquee-smooth {
+  0% { 
+    transform: translate3d(0, 0, 0); 
+  }
+  /* Use exact 50% for perfect duplication */
+  100% { 
+    transform: translate3d(0, -50%, 0); 
+  }
+}
+
+/* Utility classes for the testimonial side carousels */
+.side-carousel-container {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  width: 240px;
+  pointer-events: none;
+  /* Soft gradient fade into the page background */
+}
+
+.side-carousel-right { right: 24px; }
+
+.side-carousel-mask {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  /* Add slight padding to ensure clean transitions */
+  padding-top: 0;
+  pointer-events: none;
+}
+
+.side-carousel-track {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  animation: vertical-marquee-smooth 25s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
+  /* Ensure pixel-perfect positioning */
+  position: relative;
+  top: 0;
+  left: 0;
+  transform-origin: 0 0;
+  /* Eliminate subpixel rendering issues */
+  transform-style: preserve-3d;
+  /* Force hardware acceleration and prevent subpixel shifts */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  /* Ensure consistent spacing alignment */
+  -webkit-font-smoothing: antialiased;
+  pointer-events: none;
+}
+
+.side-carousel-track.reverse {
+  animation-direction: reverse;
+}
+
+/* Pause animation on hover */
+.side-carousel-inline:hover .side-carousel-track,
+.side-carousel-container:hover .side-carousel-track {
+  animation-play-state: paused;
+}
+
+.testimonial-card {
+  width: 300px; /* container 240 - padding/margins */
+  margin-left: 16px;
+  margin-right: 16px;
+  border: 2px solid #000;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 4px 4px 0 rgba(0,0,0,1);
+  padding: 20px;
+  pointer-events: none; /* Prevent cards from blocking page interactions */
+}
+
+.testimonial-author {
+  margin-top: 8px;
+  font-weight: 600;
+}
+
+/* Respect small screens: hide carousels below 1024px */
+@media (max-width: 1024px) {
+  .side-carousel-container { display: none; }
+}
+
+/* Inline (non-fixed) carousel for flex layouts */
+.side-carousel-inline {
+  position: relative;
+  width: 332px;
+  height: 100vh; /* span full viewport height */
+  pointer-events: auto; /* Enable hover detection */
+}
+
+@media (max-width: 1024px) {
+  .side-carousel-inline { display: none; }
+}
