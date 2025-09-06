@@ -25,7 +25,10 @@ function LandingPage() {
       <div className='flex w-full h-full min-h-screen items-center justify-center xl:gap-56 md:gap-20 px-8 xs:px-12 md:px-0'>
         <div className='flex flex-col w-full xl:max-w-[38rem] md:max-w-xl items-start gap-6'>
             <div className='flex flex-col items-start gap-3'>
-                <h1 className='text-3xl font-bold tracking-wide'>FujiMoji 🍎️</h1>
+              <div className='flex items-center'>
+                <h1 className='text-3xl font-bold tracking-wide'>FujiMoji</h1>
+                <img src='/fujimoji-logo.png' alt='FujiMoji Logo' className='w-14 h-14' />
+              </div>
                 <h2 className='text-xl font-medium'>The sweetest way to express yourself on macOS</h2>
             </div>
           <div className='my-2 w-full'>
@@ -47,7 +50,7 @@ function LandingPage() {
               className='flex items-center gap-2 px-4 py-2 rounded-md bg-white text-black border-2 border-black font-semibold shadow-button active:shadow-none active:translate-x-1 active:translate-y-1'
               onClick={() => {
                 setTimeout(() => {
-                  window.location.href = 'https://github.com/RickLiu1203/FujiMoji/releases/download/v1.0/FujiMoji.dmg';
+                  window.location.href = 'https://github.com/RickLiu1203/FujiMoji/releases/download/v2.0/FujiMoji.dmg';
                 }, 150);
               }}
             >
